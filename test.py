@@ -13,6 +13,7 @@ def load_questions_from_file(filename):
                 "options": row[1:5],
                 "answer": row[5]
             }
+            
             questions.append(question)
 
 # Load questions from a CSV file
