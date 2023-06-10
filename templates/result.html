@@ -8,12 +8,12 @@
     <h2>Score: {{ score }}</h2>
     <h2>User Responses:</h2>
     <ul>
-        {% for question in questions %}
+        {% for result in results %}
         <li>
-            <strong>Question:</strong> {{ question.question }}<br>
-            <strong>User's Answer:</strong> {{ user_responses[loop.index0] }}<br>
-            <strong>Correct Answer:</strong> {{ question.answer }}<br>
-            <strong>Result:</strong> {% if user_responses[loop.index0] == question.answer %}Correct{% else %}Incorrect{% endif %}
+            <strong>Question:</strong> {{ result.question }}<br>
+            <strong>User's Answer:</strong> {{ result.user_answer }}<br>
+            <strong>Correct Answer:</strong> {{ result.correct_answer }}<br>
+            <strong>Result:</strong> {% if result.is_correct %}Correct{% else %}Incorrect{% endif %}
         </li>
         <br>
         {% endfor %}

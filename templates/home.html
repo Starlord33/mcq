@@ -4,17 +4,64 @@
     <title>Home Page</title>
 </head>
 <body>
-    <h1>Multiple Choice Questions</h1>
-    <form method="POST" action="/">
+    <h1>MCQ Quiz</h1>
+    <form method="POST" action="/result">
         {% for question in questions %}
         <h3>{{ question.question }}</h3>
         {% for option in question.options %}
-        <input type="radio" id="option-{{ loop.index0 }}-{{ loop.index0 }}" name="question-{{ loop.index0 }}" value="{{ option }}">
-        <label for="option-{{ loop.index0 }}-{{ loop.index0 }}">{{ option }}</label><br>
+        <input type="radio" name="question-{{ loop.index0 }}" value="{{ option }}"> {{ option }}<br>
         {% endfor %}
         <br>
         {% endfor %}
         <input type="submit" value="Submit">
+    </form>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+</head>
+<body>
+    <h1>MCQ Quiz</h1>
+    <form method="POST" action="/result">
+        {% for question in questions %}
+        <h3>{{ question.question }}</h3>
+        {% for option in question.options[:4] %}
+        <label>
+            <input type="radio" name="question-{{ loop.index0 }}" value="{{ option }}"> {{ option }}<br>
+        </label>
+        {% endfor %}
+        <br>
+        {% endfor %}
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+</head>
+<body>
+    <h1>Quiz</h1>
+    <form action="/" method="POST">
+        {% for question in questions %}
+            <div>
+                <p>{{ question.question }}</p>
+                {% for option in question.options %}
+                    <div>
+                        <input type="radio" name="question-{{ loop.index0 }}" value="{{ option }}" id="{{ option }}">
+                        <label for="{{ option }}">{{ option }}</label>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        <button type="submit">Submit</button>
     </form>
 </body>
 </html> -->
@@ -25,14 +72,14 @@
     <title>Home Page</title>
 </head>
 <body>
-    <h1>Multiple Choice Questions</h1>
-    <form method="POST" action="/">
-        {% for question in questions %}
-        <h2>Question {{ loop.index }}</h2>
-        <p>{{ question.question }}</p>
-        {% set question_index = loop.index0 %}
+    <h1>MCQ Quiz</h1>
+    <form method="POST" action="/result">
+        {% for index, question in questions|enumerate %}
+        <h3>{{ question.question }}</h3>
         {% for option in question.options %}
-        <input type="radio" name="question-{{ question_index }}" value="{{ option }}">{{ option }}<br>
+        <label>
+            <input type="radio" name="question-{{ index }}" value="{{ option }}" required> {{ option }}<br>
+        </label>
         {% endfor %}
         <br>
         {% endfor %}
