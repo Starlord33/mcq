@@ -1,0 +1,42 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+</head>
+<body>
+    <h1>Multiple Choice Questions</h1>
+    <form method="POST" action="/">
+        {% for question in questions %}
+        <h3>{{ question.question }}</h3>
+        {% for option in question.options %}
+        <input type="radio" id="option-{{ loop.index0 }}-{{ loop.index0 }}" name="question-{{ loop.index0 }}" value="{{ option }}">
+        <label for="option-{{ loop.index0 }}-{{ loop.index0 }}">{{ option }}</label><br>
+        {% endfor %}
+        <br>
+        {% endfor %}
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+</head>
+<body>
+    <h1>Multiple Choice Questions</h1>
+    <form method="POST" action="/">
+        {% for question in questions %}
+        <h2>Question {{ loop.index }}</h2>
+        <p>{{ question.question }}</p>
+        {% set question_index = loop.index0 %}
+        {% for option in question.options %}
+        <input type="radio" name="question-{{ question_index }}" value="{{ option }}">{{ option }}<br>
+        {% endfor %}
+        <br>
+        {% endfor %}
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

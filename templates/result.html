@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result Page</title>
+</head>
+<body>
+    <h1>Result</h1>
+    <h2>Score: {{ score }}</h2>
+    <h2>User Responses:</h2>
+    <ul>
+        {% for question in questions %}
+        <li>
+            <strong>Question:</strong> {{ question.question }}<br>
+            <strong>User's Answer:</strong> {{ user_responses[loop.index0] }}<br>
+            <strong>Correct Answer:</strong> {{ question.answer }}<br>
+            <strong>Result:</strong> {% if user_responses[loop.index0] == question.answer %}Correct{% else %}Incorrect{% endif %}
+        </li>
+        <br>
+        {% endfor %}
+    </ul>
+</body>
+</html>
